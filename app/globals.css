@@ -5,6 +5,7 @@
   --foreground: #0f1e3d;
   --color-navy: #0f1e3d;
   --color-blue: #2f6fed;
+  --color-blue-dark: #1f4fc4;
   --color-blue-light: #e8f0fe;
   --color-gray-text: #6b7280;
   --color-bg-soft: #f7f8fa;
@@ -15,13 +16,58 @@
   --color-foreground: var(--foreground);
   --color-navy: var(--color-navy);
   --color-blue: var(--color-blue);
+  --color-blue-dark: var(--color-blue-dark);
   --color-blue-light: var(--color-blue-light);
   --color-gray-text: var(--color-gray-text);
   --color-bg-soft: var(--color-bg-soft);
   --font-sans: var(--font-inter);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.7s ease-out 0.1s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s ease-out 0.2s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.7s ease-out 0.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay-1,
+  .animate-fade-up-delay-2,
+  .animate-fade-up-delay-3 {
+    animation: none;
+  }
 }

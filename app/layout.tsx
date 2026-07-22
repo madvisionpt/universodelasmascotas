@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -7,10 +7,47 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://universodelasmascotas.vercel.app";
+const title = "Universo de las Mascotas";
+const description =
+  "Consejos y guías prácticas para mejorar la salud, el bienestar y la felicidad de tu compañero.";
+
 export const metadata: Metadata = {
-  title: "Universo de las Mascotas",
-  description:
-    "Consejos y guías prácticas para mejorar la salud, el bienestar y la felicidad de tu compañero.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: title,
+    template: `%s | ${title}`,
+  },
+  description,
+  keywords: [
+    "mascotas",
+    "perros",
+    "gatos",
+    "cuidado de mascotas",
+    "salud animal",
+    "consejos para mascotas",
+  ],
+  openGraph: {
+    title,
+    description,
+    url: siteUrl,
+    siteName: title,
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0f1e3d",
 };
 
 export default function RootLayout({

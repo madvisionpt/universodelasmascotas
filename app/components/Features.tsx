@@ -34,9 +34,12 @@ export default function Features() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <div className="grid grid-cols-2 gap-8 sm:gap-10 md:grid-cols-4">
           {features.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="flex flex-col items-center text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-light">
-                <Icon className="h-7 w-7 text-navy" />
+            <div
+              key={title}
+              className="group flex flex-col items-center rounded-2xl p-4 text-center transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_16px_32px_-20px_rgba(15,30,61,0.25)]"
+            >
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-blue-light transition-colors duration-300 group-hover:bg-blue">
+                <Icon className="h-7 w-7 text-navy transition-colors duration-300 group-hover:text-white" />
               </div>
               <h3 className="mt-4 text-sm font-bold text-navy sm:text-base">
                 {title}
