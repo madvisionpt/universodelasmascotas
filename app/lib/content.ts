@@ -3,6 +3,9 @@ import path from "node:path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { slugifyTema } from "./slug";
+
+export { slugifyTema };
 
 const contentDir = path.join(process.cwd(), "content");
 
@@ -42,16 +45,6 @@ export type ArticleFrontmatter = {
 };
 
 export type Tema = { slug: string; label: string };
-
-const DIACRITICS_RE = new RegExp("[\\u0300-\\u036f]", "g");
-
-export function slugifyTema(value: string): string {
-  return value
-    .normalize("NFD")
-    .replace(DIACRITICS_RE, "")
-    .toLowerCase()
-    .trim();
-}
 
 function categoryDir(category: CategorySlug): string {
   return path.join(contentDir, category);

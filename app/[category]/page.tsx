@@ -10,6 +10,7 @@ import {
   slugifyTema,
   type CategorySlug,
 } from "../lib/content";
+import { getSubtemaLabel } from "../lib/nav";
 import Breadcrumbs from "../components/Breadcrumbs";
 
 type Props = {
@@ -53,7 +54,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
     ? allArticles.filter((a) => a.tema && slugifyTema(a.tema) === tema)
     : allArticles;
 
-  const activeTemaLabel = tema ? temas.find((t) => t.slug === tema)?.label ?? tema : null;
+  const activeTemaLabel = tema
+    ? temas.find((t) => t.slug === tema)?.label ?? getSubtemaLabel(`/${category}`, tema) ?? tema
+    : null;
 
   return (
     <div className="flex-1 bg-white">

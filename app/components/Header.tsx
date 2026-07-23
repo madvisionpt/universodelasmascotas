@@ -1,14 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LogoIcon, MenuIcon, CloseIcon } from "./icons";
+import { LogoIcon, MenuIcon, CloseIcon, ChevronDownIcon } from "./icons";
+import { mainNavLinks } from "../lib/nav";
 
-export type NavTema = { slug: string; label: string };
-export type NavLink = { href: string; label: string; temas?: NavTema[] };
-
-export default function Header({ navLinks }: { navLinks: NavLink[] }) {
+export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openAccordion, setOpenAccordion] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -16,6 +15,18 @@ export default function Header({ navLinks }: { navLinks: NavLink[] }) {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  function closeDrawer() {
+    setOpen(false);
+    setOpenAccordion(null);
+  }
 
   return (
     <header
@@ -36,77 +47,139 @@ export default function Header({ navLinks }: { navLinks: NavLink[] }) {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-7 lg:flex">
-          {navLinks.map((link) => (
-            <div key={link.href} className="group relative">
-              <a href={link.href} className="relative text-sm font-semibold text-navy">
+        <nav className="hidden items-center gap-6 lg:flex">
+          {mainNavLinks.map((link) =>
+            link.highlight ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className="rounded-full bg-blue px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-dark"
+              >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue transition-all duration-300 group-hover:w-full" />
               </a>
+            ) : (
+              <div key={link.href} className="group relative">
+                <a href={link.href} className="relative text-sm font-semibold text-navy">
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue transition-all duration-300 group-hover:w-full" />
+                </a>
 
-              {link.temas && link.temas.length > 0 && (
-                <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                  <div className="flex min-w-[180px] flex-col gap-0.5 rounded-2xl border border-navy/10 bg-white p-2 shadow-[0_20px_40px_-16px_rgba(15,30,61,0.3)]">
-                    {link.temas.map((t) => (
+                {link.subtemas && link.subtemas.length > 0 && (
+                  <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="flex min-w-[200px] flex-col gap-0.5 rounded-2xl border border-navy/10 bg-white p-2 shadow-[0_20px_40px_-16px_rgba(15,30,61,0.3)]">
+                      {link.subtemas.map((t) => (
+                        <a
+                          key={t.slug}
+                          href={`${link.href}?tema=${t.slug}`}
+                          className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-navy transition-colors hover:bg-blue-light hover:text-blue"
+                        >
+                          {t.label}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )
+          )}
+        </nav>
+
+        <button
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded={open}
+          onClick={() => setOpen(true)}
+          className="flex h-10 w-10 items-center justify-center text-navy transition-colors hover:text-blue lg:hidden"
+        >
+          <MenuIcon className="h-7 w-7" />
+        </button>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-50 bg-navy/40 transition-opacity duration-300 lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+        onClick={closeDrawer}
+        aria-hidden={!open}
+      />
+
+      <aside
+        className={`fixed inset-y-0 right-0 z-50 flex h-full w-[85vw] max-w-sm flex-col bg-white shadow-2xl transition-transform duration-300 ease-out lg:hidden ${
+          open ? "translate-x-0" : "translate-x-full"
+        }`}
+        aria-hidden={!open}
+      >
+        <div className="flex items-center justify-between border-b border-navy/10 px-5 py-5">
+          <span className="text-sm font-extrabold uppercase tracking-wide text-navy">Menú</span>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={closeDrawer}
+            className="flex h-9 w-9 items-center justify-center text-navy transition-colors hover:text-blue"
+          >
+            <CloseIcon className="h-5 w-5" />
+          </button>
+        </div>
+
+        <nav className="flex flex-1 flex-col gap-1 overflow-y-auto px-3 py-4">
+          {mainNavLinks.map((link) =>
+            link.highlight ? (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={closeDrawer}
+                className="mx-2 mt-2 rounded-full bg-blue px-4 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-blue-dark"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <div key={link.href}>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setOpenAccordion((prev) => (prev === link.href ? null : link.href))
+                  }
+                  aria-expanded={openAccordion === link.href}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-sm font-semibold text-navy transition-colors hover:bg-blue-light hover:text-blue"
+                >
+                  {link.label}
+                  <ChevronDownIcon
+                    className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
+                      openAccordion === link.href ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
+                    openAccordion === link.href ? "max-h-96" : "max-h-0"
+                  }`}
+                >
+                  <div className="ml-3 flex flex-col gap-0.5 border-l border-navy/10 py-1 pl-3">
+                    <a
+                      href={link.href}
+                      onClick={closeDrawer}
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-blue"
+                    >
+                      Ver todo en {link.label}
+                    </a>
+                    {link.subtemas?.map((t) => (
                       <a
                         key={t.slug}
                         href={`${link.href}?tema=${t.slug}`}
-                        className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-navy transition-colors hover:bg-blue-light hover:text-blue"
+                        onClick={closeDrawer}
+                        className="rounded-lg px-3 py-2 text-sm text-gray-text transition-colors hover:bg-blue-light hover:text-blue"
                       >
                         {t.label}
                       </a>
                     ))}
                   </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            )
+          )}
         </nav>
-
-        <button
-          type="button"
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center text-navy transition-colors hover:text-blue lg:hidden"
-        >
-          {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-7 w-7" />}
-        </button>
-      </div>
-
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
-          open ? "max-h-[36rem] opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <nav className="flex flex-col gap-1 rounded-b-2xl bg-white px-4 pb-5 pt-1 shadow-lg sm:px-6">
-          {navLinks.map((link) => (
-            <div key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-blue-light hover:text-blue"
-              >
-                {link.label}
-              </a>
-              {link.temas && link.temas.length > 0 && (
-                <div className="ml-3 flex flex-col gap-0.5 border-l border-navy/10 pl-3">
-                  {link.temas.map((t) => (
-                    <a
-                      key={t.slug}
-                      href={`${link.href}?tema=${t.slug}`}
-                      onClick={() => setOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm text-gray-text transition-colors hover:bg-blue-light hover:text-blue"
-                    >
-                      {t.label}
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-        </nav>
-      </div>
+      </aside>
     </header>
   );
 }

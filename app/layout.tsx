@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { siteUrl, siteTitle, siteDescription } from "./lib/site";
-import { getTemasByCategory, isCategory } from "./lib/content";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "./globals.css";
@@ -52,22 +51,6 @@ export const viewport: Viewport = {
   themeColor: "#0f1e3d",
 };
 
-const baseNavLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/perros", label: "Perros" },
-  { href: "/gatos", label: "Gatos" },
-  { href: "/comparativas", label: "Comparativas" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contacto", label: "Contacto" },
-];
-
-const navLinks = baseNavLinks.map((link) => {
-  const slug = link.href.slice(1);
-  if (!isCategory(slug)) return link;
-  const temas = getTemasByCategory(slug);
-  return temas.length > 0 ? { ...link, temas } : link;
-});
-
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -101,7 +84,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Header navLinks={navLinks} />
+        <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
       </body>
