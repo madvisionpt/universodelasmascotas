@@ -35,10 +35,23 @@ export type ArticleFrontmatter = {
   title: string;
   description: string;
   category: CategorySlug;
+  tema?: string;
   slug: string;
   keyword: string;
   date: string;
 };
+
+export type Tema = { slug: string; label: string };
+
+const DIACRITICS_RE = new RegExp("[\\u0300-\\u036f]", "g");
+
+export function slugifyTema(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(DIACRITICS_RE, "")
+    .toLowerCase()
+    .trim();
+}
 
 function categoryDir(category: CategorySlug): string {
   return path.join(contentDir, category);
@@ -71,6 +84,16 @@ export function getArticlesByCategory(category: CategorySlug): ArticleFrontmatte
 
 export function getAllArticles(): ArticleFrontmatter[] {
   return categories.flatMap((c) => getArticlesByCategory(c.slug));
+}
+
+export function getTemasByCategory(category: CategorySlug): Tema[] {
+  const seen = new Map<string, string>();
+  for (const article of getArticlesByCategory(category)) {
+    if (!article.tema) continue;
+    const slug = slugifyTema(article.tema);
+    if (!seen.has(slug)) seen.set(slug, article.tema);
+  }
+  return Array.from(seen, ([slug, label]) => ({ slug, label }));
 }
 
 export async function getArticle(

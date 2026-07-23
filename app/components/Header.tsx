@@ -3,16 +3,10 @@
 import { useEffect, useState } from "react";
 import { LogoIcon, MenuIcon, CloseIcon } from "./icons";
 
-const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/perros", label: "Perros" },
-  { href: "/gatos", label: "Gatos" },
-  { href: "/comparativas", label: "Comparativas" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contacto", label: "Contacto" },
-];
+export type NavTema = { slug: string; label: string };
+export type NavLink = { href: string; label: string; temas?: NavTema[] };
 
-export default function Header() {
+export default function Header({ navLinks }: { navLinks: NavLink[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -44,14 +38,28 @@ export default function Header() {
 
         <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="group relative text-sm font-semibold text-navy"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue transition-all duration-300 group-hover:w-full" />
-            </a>
+            <div key={link.href} className="group relative">
+              <a href={link.href} className="relative text-sm font-semibold text-navy">
+                {link.label}
+                <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue transition-all duration-300 group-hover:w-full" />
+              </a>
+
+              {link.temas && link.temas.length > 0 && (
+                <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="flex min-w-[180px] flex-col gap-0.5 rounded-2xl border border-navy/10 bg-white p-2 shadow-[0_20px_40px_-16px_rgba(15,30,61,0.3)]">
+                    {link.temas.map((t) => (
+                      <a
+                        key={t.slug}
+                        href={`${link.href}?tema=${t.slug}`}
+                        className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-navy transition-colors hover:bg-blue-light hover:text-blue"
+                      >
+                        {t.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
 
@@ -68,19 +76,34 @@ export default function Header() {
 
       <div
         className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[36rem] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col gap-1 rounded-b-2xl bg-white px-4 pb-5 pt-1 shadow-lg sm:px-6">
           {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-3 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-blue-light hover:text-blue"
-            >
-              {link.label}
-            </a>
+            <div key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-navy transition-colors hover:bg-blue-light hover:text-blue"
+              >
+                {link.label}
+              </a>
+              {link.temas && link.temas.length > 0 && (
+                <div className="ml-3 flex flex-col gap-0.5 border-l border-navy/10 pl-3">
+                  {link.temas.map((t) => (
+                    <a
+                      key={t.slug}
+                      href={`${link.href}?tema=${t.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="rounded-lg px-3 py-2 text-sm text-gray-text transition-colors hover:bg-blue-light hover:text-blue"
+                    >
+                      {t.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           ))}
         </nav>
       </div>

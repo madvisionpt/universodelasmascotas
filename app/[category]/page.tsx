@@ -5,12 +5,17 @@ import {
   categories,
   categoryLabel,
   getArticlesByCategory,
+  getTemasByCategory,
   isCategory,
+  slugifyTema,
   type CategorySlug,
 } from "../lib/content";
 import Breadcrumbs from "../components/Breadcrumbs";
 
-type Props = { params: Promise<{ category: string }> };
+type Props = {
+  params: Promise<{ category: string }>;
+  searchParams: Promise<{ tema?: string }>;
+};
 
 export function generateStaticParams() {
   return categories.map((c) => ({ category: c.slug }));
@@ -35,12 +40,20 @@ function formatDate(dateStr: string) {
   });
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage({ params, searchParams }: Props) {
   const { category } = await params;
   if (!isCategory(category)) notFound();
 
+  const { tema } = await searchParams;
   const label = categoryLabel(category as CategorySlug);
-  const articles = getArticlesByCategory(category as CategorySlug);
+  const allArticles = getArticlesByCategory(category as CategorySlug);
+  const temas = getTemasByCategory(category as CategorySlug);
+
+  const articles = tema
+    ? allArticles.filter((a) => a.tema && slugifyTema(a.tema) === tema)
+    : allArticles;
+
+  const activeTemaLabel = tema ? temas.find((t) => t.slug === tema)?.label ?? tema : null;
 
   return (
     <div className="flex-1 bg-white">
@@ -51,8 +64,38 @@ export default async function CategoryPage({ params }: Props) {
           {label}
         </h1>
         <p className="mt-3 max-w-2xl text-base leading-relaxed text-gray-text">
-          Artículos y guías sobre {label.toLowerCase()}.
+          {activeTemaLabel
+            ? `Mostrando artículos de: ${activeTemaLabel}`
+            : `Artículos y guías sobre ${label.toLowerCase()}.`}
         </p>
+
+        {temas.length > 0 && (
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            <a
+              href={`/${category}`}
+              className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                !tema
+                  ? "border-blue bg-blue-light text-blue"
+                  : "border-navy/10 bg-bg-soft text-navy hover:border-blue hover:bg-blue-light hover:text-blue"
+              }`}
+            >
+              Todos
+            </a>
+            {temas.map((t) => (
+              <a
+                key={t.slug}
+                href={`/${category}?tema=${t.slug}`}
+                className={`rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                  tema === t.slug
+                    ? "border-blue bg-blue-light text-blue"
+                    : "border-navy/10 bg-bg-soft text-navy hover:border-blue hover:bg-blue-light hover:text-blue"
+                }`}
+              >
+                {t.label}
+              </a>
+            ))}
+          </div>
+        )}
 
         {articles.length > 0 ? (
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -77,9 +120,23 @@ export default async function CategoryPage({ params }: Props) {
         ) : (
           <div className="mt-10 rounded-2xl bg-bg-soft px-6 py-14 text-center">
             <p className="text-base font-semibold text-navy">
-              Todavía no hay artículos en esta categoría.
+              {tema
+                ? "Todavía no hay artículos en este tema."
+                : "Todavía no hay artículos en esta categoría."}
             </p>
-            <p className="mt-2 text-sm text-gray-text">Vuelve pronto.</p>
+            <p className="mt-2 text-sm text-gray-text">
+              {tema ? (
+                <>
+                  Vuelve pronto o explora{" "}
+                  <a href={`/${category}`} className="font-semibold text-blue">
+                    todos los artículos de {label.toLowerCase()}
+                  </a>
+                  .
+                </>
+              ) : (
+                "Vuelve pronto."
+              )}
+            </p>
           </div>
         )}
       </div>

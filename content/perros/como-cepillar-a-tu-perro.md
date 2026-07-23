@@ -2,6 +2,7 @@
 title: "Cómo cepillar a tu perro correctamente"
 description: "Guía práctica para cepillar a tu perro según su tipo de pelo, con qué frecuencia hacerlo y qué cepillo elegir."
 category: perros
+tema: "Cuidados"
 slug: como-cepillar-a-tu-perro
 keyword: cepillar perro
 date: 2026-07-20
