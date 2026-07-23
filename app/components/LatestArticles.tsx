@@ -17,7 +17,7 @@ export default function LatestArticles() {
         <div className="mt-8 grid grid-cols-1 gap-6 sm:mt-10 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
             <a
-              href={`/blog?especie=${article.species}`}
+              href={`/blog/${article.slug}`}
               key={article.slug}
               className="group flex flex-col rounded-2xl bg-white p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(15,30,61,0.3)]"
             >

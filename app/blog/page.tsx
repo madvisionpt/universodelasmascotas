@@ -90,7 +90,8 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
         {articles.length > 0 ? (
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => (
-              <div
+              <a
+                href={`/blog/${article.slug}`}
                 key={article.slug}
                 className="group flex flex-col rounded-2xl bg-bg-soft p-2 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(15,30,61,0.3)]"
               >
@@ -112,7 +113,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 <p className="mt-1.5 text-sm leading-relaxed text-gray-text">
                   {article.description}
                 </p>
-              </div>
+              </a>
             ))}
           </div>
         ) : (
