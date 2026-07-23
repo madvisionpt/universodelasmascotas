@@ -1,9 +1,18 @@
 import { LogoIcon, InstagramIcon, FacebookIcon, TiktokIcon } from "./icons";
 
+const mascotasLinks = [
+  { href: "/perros", label: "Perros" },
+  { href: "/gatos", label: "Gatos" },
+];
+
+const recursosLinks = [
+  { href: "/blog", label: "Blog" },
+  { href: "/comparativas", label: "Comparativas" },
+];
+
 const siteLinks = [
-  { href: "#top", label: "Inicio" },
-  { href: "#articulos", label: "Artículos" },
-  { href: "#footer", label: "Contacto" },
+  { href: "/", label: "Inicio" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 const socialLinks = [
@@ -14,11 +23,11 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer id="footer" className="scroll-mt-24 bg-navy text-white">
+    <footer className="bg-navy text-white">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
-          <div>
-            <a href="#top" className="flex items-center gap-3">
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-4">
+          <div className="col-span-2 sm:col-span-4 lg:col-span-1">
+            <a href="/" className="flex items-center gap-3">
               <LogoIcon className="h-11 w-11 shrink-0" />
               <span className="flex flex-col leading-[1.05]">
                 <span className="text-base font-extrabold tracking-tight text-white">
@@ -37,10 +46,10 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wide text-white/50">
-              Sitio
+              Mascotas
             </h3>
             <ul className="mt-4 flex flex-col gap-3">
-              {siteLinks.map((link) => (
+              {mascotasLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -55,17 +64,47 @@ export default function Footer() {
 
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wide text-white/50">
-              Síguenos
+              Recursos
             </h3>
-            <div className="mt-4 flex gap-3">
+            <ul className="mt-4 flex flex-col gap-3">
+              {recursosLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-white/80 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-bold uppercase tracking-wide text-white/50">
+              Sitio
+            </h3>
+            <ul className="mt-4 flex flex-col gap-3">
+              {siteLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-white/80 transition-colors hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 flex gap-3">
               {socialLinks.map(({ href, label, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-300 hover:bg-blue"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-colors duration-300 hover:bg-blue"
                 >
-                  <Icon className="h-5 w-5" />
+                  <Icon className="h-4 w-4" />
                 </a>
               ))}
             </div>

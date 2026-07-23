@@ -21,7 +21,7 @@ export default function Newsletter() {
           <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
 
           <h2 className="relative text-2xl font-extrabold tracking-tight text-white sm:text-3xl">
-            Recibe consejos cada semana
+            Únete a otros amantes de las mascotas
           </h2>
           <p className="relative mx-auto mt-3 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
             Suscríbete y recibe guías prácticas sobre salud, alimentación y

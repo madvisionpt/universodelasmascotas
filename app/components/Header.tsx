@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 import { LogoIcon, MenuIcon, CloseIcon } from "./icons";
 
 const navLinks = [
-  { href: "#top", label: "Inicio" },
-  { href: "#articulos", label: "Artículos" },
-  { href: "#footer", label: "Contacto" },
+  { href: "/", label: "Inicio" },
+  { href: "/perros", label: "Perros" },
+  { href: "/gatos", label: "Gatos" },
+  { href: "/comparativas", label: "Comparativas" },
+  { href: "/blog", label: "Blog" },
+  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function Header() {
@@ -27,7 +30,7 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6">
-        <a href="#top" className="flex items-center gap-3">
+        <a href="/" className="flex items-center gap-3">
           <LogoIcon className="h-12 w-12 shrink-0 sm:h-14 sm:w-14" />
           <span className="flex flex-col leading-[1.05]">
             <span className="text-lg font-extrabold tracking-tight text-navy sm:text-xl">
@@ -39,7 +42,7 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -57,15 +60,15 @@ export default function Header() {
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center text-navy transition-colors hover:text-blue md:hidden"
+          className="flex h-10 w-10 items-center justify-center text-navy transition-colors hover:text-blue lg:hidden"
         >
           {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-7 w-7" />}
         </button>
       </div>
 
       <div
-        className={`overflow-hidden transition-all duration-300 ease-out md:hidden ${
-          open ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        className={`overflow-hidden transition-all duration-300 ease-out lg:hidden ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <nav className="flex flex-col gap-1 rounded-b-2xl bg-white px-4 pb-5 pt-1 shadow-lg sm:px-6">

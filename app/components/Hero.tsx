@@ -10,21 +10,30 @@ export default function Hero() {
             <h1 className="animate-fade-up text-4xl font-extrabold leading-[1.08] tracking-tight text-navy sm:text-5xl lg:text-6xl">
               Todo para
               <br />
-              cuidar a tu
+              cuidar mejor
               <br />
-              mascota
+              de tu mascota
             </h1>
             <p className="animate-fade-up-delay-1 mt-6 max-w-md text-base leading-relaxed text-gray-text sm:text-lg">
-              Consejos y guías prácticas para mejorar la salud, el bienestar y
-              la felicidad de tu compañero.
+              Guías prácticas, consejos de expertos y comparativas para
+              ayudar a cuidar a tu mejor compañero.
             </p>
-            <a
-              href="#articulos"
-              className="animate-fade-up-delay-2 mt-8 inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-dark hover:shadow-lg hover:shadow-blue/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 sm:text-base"
-            >
-              Ver más artículos
-              <ArrowRightIcon className="h-4 w-4" />
-            </a>
+            <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="/blog"
+                className="inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-dark hover:shadow-lg hover:shadow-blue/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 sm:text-base"
+              >
+                Ver artículos
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+              <a
+                href="/comparativas"
+                className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-blue hover:text-blue focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 sm:text-base"
+              >
+                Ver comparativas
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+            </div>
           </div>
 
           <div className="relative">
