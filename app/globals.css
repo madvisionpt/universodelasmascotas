@@ -98,6 +98,13 @@ body {
   color: #374151;
 }
 
+.prose img {
+  margin-top: 1.5em;
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
