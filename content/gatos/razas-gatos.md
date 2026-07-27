@@ -1,7 +1,7 @@
 ---
 title: "Las 10 razas de gatos más cariñosas y sociables"
 description: "Si buscas un gato mimoso, estas razas destacan por su carácter afectuoso."
-category: "Gatos"
+category: gatos
 tema: "Razas"
 imagen: "/images/articulos/10gatos.png"
 slug: "razas-gatos"

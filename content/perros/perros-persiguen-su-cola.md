@@ -1,7 +1,7 @@
 ---
 title: "¿Por qué los perros persiguen su propia cola?"
 description: "Explicamos las razones detrás de este curioso comportamiento canino, desde el juego hasta señales médicas."
-category: "Perros"
+category: perros
 tema: "Comportamiento canino"
 imagen: "/images/articulos/lacola.png"
 slug: "perros-persiguen-su-cola"

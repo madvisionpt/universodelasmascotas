@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { LogoIcon, MenuIcon, CloseIcon, ChevronDownIcon } from "./icons";
 import { mainNavLinks } from "../lib/nav";
 
@@ -8,6 +8,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
+  const [openDesktop, setOpenDesktop] = useState<string | null>(null);
+  const desktopNavRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -22,6 +24,26 @@ export default function Header() {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!openDesktop) return;
+
+    function handlePointerDown(e: MouseEvent) {
+      if (e.target instanceof Node && !desktopNavRef.current?.contains(e.target)) {
+        setOpenDesktop(null);
+      }
+    }
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpenDesktop(null);
+    }
+
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [openDesktop]);
 
   function closeDrawer() {
     setOpen(false);
@@ -47,7 +69,7 @@ export default function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav ref={desktopNavRef} className="hidden items-center gap-6 lg:flex">
           {mainNavLinks.map((link) =>
             link.highlight ? (
               <a
@@ -58,26 +80,48 @@ export default function Header() {
                 {link.label}
               </a>
             ) : (
-              <div key={link.href} className="group relative">
+              <div key={link.href} className="group relative flex items-center">
                 <a href={link.href} className="relative text-sm font-semibold text-navy">
                   {link.label}
                   <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-blue transition-all duration-300 group-hover:w-full" />
                 </a>
 
                 {link.subtemas && link.subtemas.length > 0 && (
-                  <div className="invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
-                    <div className="flex min-w-[200px] flex-col gap-0.5 rounded-2xl border border-navy/10 bg-white p-2 shadow-[0_20px_40px_-16px_rgba(15,30,61,0.3)]">
-                      {link.subtemas.map((t) => (
-                        <a
-                          key={t.slug}
-                          href={`${link.href}?tema=${t.slug}`}
-                          className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-navy transition-colors hover:bg-blue-light hover:text-blue"
-                        >
-                          {t.label}
-                        </a>
-                      ))}
+                  <>
+                    <button
+                      type="button"
+                      aria-label={`Mostrar subtemas de ${link.label}`}
+                      aria-expanded={openDesktop === link.href}
+                      onClick={() =>
+                        setOpenDesktop((prev) => (prev === link.href ? null : link.href))
+                      }
+                      className="ml-1 flex h-5 w-5 items-center justify-center text-navy/50 transition-colors hover:text-blue"
+                    >
+                      <ChevronDownIcon
+                        className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                          openDesktop === link.href ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+
+                    <div
+                      className={`invisible absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 ${
+                        openDesktop === link.href ? "!visible !opacity-100" : ""
+                      }`}
+                    >
+                      <div className="flex min-w-[200px] flex-col gap-0.5 rounded-2xl border border-navy/10 bg-white p-2 shadow-[0_20px_40px_-16px_rgba(15,30,61,0.3)]">
+                        {link.subtemas.map((t) => (
+                          <a
+                            key={t.slug}
+                            href={`${link.href}?tema=${t.slug}`}
+                            className="whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium text-navy transition-colors hover:bg-blue-light hover:text-blue"
+                          >
+                            {t.label}
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </>
                 )}
               </div>
             )

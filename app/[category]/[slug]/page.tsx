@@ -25,6 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = await getArticle(category, slug);
   if (!result) return {};
   const { frontmatter } = result;
+  const images = frontmatter.imagen ? [{ url: frontmatter.imagen }] : undefined;
+
   return {
     title: frontmatter.title,
     description: frontmatter.description,
@@ -35,6 +37,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: frontmatter.description,
       type: "article",
       publishedTime: frontmatter.date,
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: frontmatter.title,
+      description: frontmatter.description,
+      images,
     },
   };
 }
@@ -56,12 +65,18 @@ export default async function ArticlePage({ params }: Props) {
 
   const { frontmatter, html } = result;
   const label = categoryLabel(category as CategorySlug);
+  const imageUrl = frontmatter.imagen
+    ? frontmatter.imagen.startsWith("http")
+      ? frontmatter.imagen
+      : `${siteUrl}${frontmatter.imagen}`
+    : undefined;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: frontmatter.title,
     description: frontmatter.description,
+    ...(imageUrl ? { image: imageUrl } : {}),
     datePublished: frontmatter.date,
     author: { "@type": "Organization", name: siteTitle },
     publisher: {
