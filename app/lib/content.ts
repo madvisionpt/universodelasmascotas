@@ -39,6 +39,7 @@ export type ArticleFrontmatter = {
   description: string;
   category: CategorySlug;
   tema?: string;
+  imagen?: string;
   slug: string;
   keyword: string;
   date: string;

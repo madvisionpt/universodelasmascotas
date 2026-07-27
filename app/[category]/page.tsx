@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { siteUrl } from "../lib/site";
 import {
@@ -12,6 +13,7 @@ import {
 } from "../lib/content";
 import { getSubtemaLabel } from "../lib/nav";
 import Breadcrumbs from "../components/Breadcrumbs";
+import { PawIcon } from "../components/icons";
 
 type Props = {
   params: Promise<{ category: string }>;
@@ -106,17 +108,34 @@ export default async function CategoryPage({ params, searchParams }: Props) {
               <a
                 key={article.slug}
                 href={`/${category}/${article.slug}`}
-                className="group flex flex-col rounded-2xl border border-navy/10 bg-bg-soft p-6 transition-all duration-300 hover:-translate-y-1 hover:border-blue hover:shadow-[0_20px_40px_-20px_rgba(15,30,61,0.3)]"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-navy/10 bg-bg-soft transition-all duration-300 hover:-translate-y-1 hover:border-blue hover:shadow-[0_20px_40px_-20px_rgba(15,30,61,0.3)]"
               >
-                <span className="text-xs font-semibold text-gray-text">
-                  {formatDate(article.date)}
-                </span>
-                <h2 className="mt-2 text-lg font-bold text-navy transition-colors duration-300 group-hover:text-blue">
-                  {article.title}
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-gray-text">
-                  {article.description}
-                </p>
+                <div className="relative h-44 w-full overflow-hidden sm:h-48">
+                  {article.imagen ? (
+                    <Image
+                      src={article.imagen}
+                      alt={article.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-blue-light">
+                      <PawIcon className="h-10 w-10 text-blue/40" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex flex-col p-6">
+                  <span className="text-xs font-semibold text-gray-text">
+                    {formatDate(article.date)}
+                  </span>
+                  <h2 className="mt-2 text-lg font-bold text-navy transition-colors duration-300 group-hover:text-blue">
+                    {article.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-text">
+                    {article.description}
+                  </p>
+                </div>
               </a>
             ))}
           </div>

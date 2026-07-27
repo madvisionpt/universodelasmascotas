@@ -3,6 +3,7 @@ title: "5 juegos para entretener a tu perro en casa"
 description: "Ideas sencillas para mantener a tu perro activo y estimulado sin salir de casa."
 category: perros
 slug: juegos-para-perros-en-casa
+imagen: "/images/articulos/brincar.png"
 keyword: juegos para perros
 date: 2026-07-22
 ---
