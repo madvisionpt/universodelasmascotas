@@ -11,19 +11,19 @@ const intents: {
     icon: HeartPulseIcon,
     title: "Mi mascota está enferma",
     description: "Encuentra síntomas, causas y qué hacer.",
-    href: "/blog",
+    href: "/cuidados-generales?tema=primeros-auxilios",
   },
   {
     icon: BowlIcon,
     title: "¿Qué puede comer?",
     description: "Descubre qué alimentos son seguros.",
-    href: "/blog",
+    href: "/perros?tema=nutricion",
   },
   {
     icon: GraduationCapIcon,
     title: "Quiero educarla",
     description: "Aprende a corregir comportamientos.",
-    href: "/blog",
+    href: "/perros?tema=adiestramiento",
   },
   {
     icon: CartIcon,

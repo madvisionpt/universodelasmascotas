@@ -1,5 +1,10 @@
 import Image from "next/image";
 import { ArrowRightIcon } from "./icons";
+import { mainNavLinks } from "../lib/nav";
+
+function subtemasFor(href: string) {
+  return mainNavLinks.find((link) => link.href === href)?.subtemas ?? [];
+}
 
 const species = [
   {
@@ -9,13 +14,7 @@ const species = [
     image:
       "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=900&q=80&fit=crop&auto=format",
     alt: "Perro mirando a cámara",
-    topics: [
-      { label: "Salud", tema: "salud" },
-      { label: "Alimentación", tema: "alimentacion" },
-      { label: "Comportamiento", tema: "comportamiento" },
-      { label: "Cachorros", tema: "cachorros" },
-      { label: "Productos", tema: "productos" },
-    ],
+    topics: subtemasFor("/perros"),
   },
   {
     slug: "gatos",
@@ -24,13 +23,7 @@ const species = [
     image:
       "https://images.unsplash.com/photo-1583795128727-6ec3642408f8?w=900&q=80&fit=crop&auto=format",
     alt: "Gato mirando a cámara",
-    topics: [
-      { label: "Salud", tema: "salud" },
-      { label: "Alimentación", tema: "alimentacion" },
-      { label: "Comportamiento", tema: "comportamiento" },
-      { label: "Gatitos", tema: "gatitos" },
-      { label: "Productos", tema: "productos" },
-    ],
+    topics: subtemasFor("/gatos"),
   },
 ];
 
@@ -70,8 +63,8 @@ export default function SpeciesSection() {
               <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-2 p-6">
                 {s.topics.map((topic) => (
                   <a
-                    key={topic.label}
-                    href={`/blog?especie=${s.slug}&tema=${topic.tema}`}
+                    key={topic.slug}
+                    href={`/${s.slug}?tema=${topic.slug}`}
                     className="rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-navy"
                   >
                     {topic.label}

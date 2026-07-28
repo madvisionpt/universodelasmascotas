@@ -1,25 +1,25 @@
 import { SearchIcon, ArrowRightIcon } from "./icons";
 
 const searches = [
-  { question: "¿Por qué mi perro tiembla?", especie: "perros", tema: "salud" },
+  { question: "¿Por qué mi perro tiembla?", category: "perros", tema: "salud" },
   {
     question: "¿Puede un gato comer plátano?",
-    especie: "gatos",
-    tema: "alimentacion",
+    category: "gatos",
+    tema: "nutricion",
   },
   {
     question: "¿Qué hacer si mi perro vomita?",
-    especie: "perros",
+    category: "perros",
     tema: "salud",
   },
   {
     question: "¿Por qué mi gato maúlla por la noche?",
-    especie: "gatos",
+    category: "gatos",
     tema: "comportamiento",
   },
   {
     question: "¿Cómo enseñar a un cachorro?",
-    especie: "perros",
+    category: "perros",
     tema: "cachorros",
   },
 ];
@@ -36,7 +36,7 @@ export default function TrendingSearches() {
           {searches.map((item) => (
             <a
               key={item.question}
-              href={`/blog?especie=${item.especie}&tema=${item.tema}`}
+              href={`/${item.category}?tema=${item.tema}`}
               className="group flex items-center gap-4 px-5 py-4 transition-colors duration-200 hover:bg-blue-light sm:px-6"
             >
               <SearchIcon className="h-4 w-4 shrink-0 text-blue" />

@@ -5,10 +5,7 @@ const mascotasLinks = [
   { href: "/gatos", label: "Gatos" },
 ];
 
-const recursosLinks = [
-  { href: "/blog", label: "Blog" },
-  { href: "/comparativas", label: "Comparativas" },
-];
+const recursosLinks = [{ href: "/comparativas", label: "Comparativas" }];
 
 const siteLinks = [
   { href: "/", label: "Inicio" },

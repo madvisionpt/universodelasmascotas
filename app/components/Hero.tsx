@@ -20,7 +20,7 @@ export default function Hero() {
             </p>
             <div className="animate-fade-up-delay-2 mt-8 flex flex-wrap items-center gap-3">
               <a
-                href="/blog"
+                href="/perros"
                 className="inline-flex items-center gap-2 rounded-full bg-blue px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-dark hover:shadow-lg hover:shadow-blue/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2 sm:text-base"
               >
                 Ver artículos
