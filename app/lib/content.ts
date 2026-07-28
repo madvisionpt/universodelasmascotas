@@ -90,12 +90,21 @@ export function getTemasByCategory(category: CategorySlug): Tema[] {
   return Array.from(seen, ([slug, label]) => ({ slug, label }));
 }
 
-// The page renders its own <h1> from frontmatter.title, so any h1 the
-// article body brings (e.g. a leading "# Heading") is demoted to h2 to
-// avoid duplicate H1s and pick up the .prose h2 styling instead of
-// unstyled browser defaults.
-function demoteBodyH1(html: string): string {
-  return html.replace(/<h1(\s[^>]*)?>/g, "<h2$1>").replace(/<\/h1>/g, "</h2>");
+// The page renders its own <h1> from frontmatter.title, so any headings
+// the article body brings are shifted down one level (h1->h2, h2->h3, ...)
+// to avoid duplicate H1s while preserving the body's own hierarchy.
+// Processed deepest-first so a freshly demoted heading isn't re-demoted
+// by a later step.
+function demoteBodyHeadings(html: string): string {
+  return html
+    .replace(/<h4(\s[^>]*)?>/g, "<h5$1>")
+    .replace(/<\/h4>/g, "</h5>")
+    .replace(/<h3(\s[^>]*)?>/g, "<h4$1>")
+    .replace(/<\/h3>/g, "</h4>")
+    .replace(/<h2(\s[^>]*)?>/g, "<h3$1>")
+    .replace(/<\/h2>/g, "</h3>")
+    .replace(/<h1(\s[^>]*)?>/g, "<h2$1>")
+    .replace(/<\/h1>/g, "</h2>");
 }
 
 export async function getArticle(
@@ -109,7 +118,7 @@ export async function getArticle(
       const processed = await remark().use(remarkHtml).process(content);
       return {
         frontmatter: normalizeFrontmatter(data),
-        html: demoteBodyH1(processed.toString()),
+        html: demoteBodyHeadings(processed.toString()),
       };
     }
   }
