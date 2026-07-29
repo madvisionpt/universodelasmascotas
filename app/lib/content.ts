@@ -57,6 +57,17 @@ function readCategoryFiles(category: CategorySlug): string[] {
   return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
+// Drafts may carry a descriptive note in `imagen` instead of a real image
+// while the photo is still being sourced (e.g. "PLACEHOLDER - buscar: ...").
+// Only keep the value when it actually looks like a path or URL, otherwise
+// next/image throws and the whole listing page fails to render; dropping it
+// lets the UI fall back to its own placeholder.
+function normalizeImagen(imagen: unknown): string | undefined {
+  if (typeof imagen !== "string") return undefined;
+  const value = imagen.trim();
+  return value.startsWith("/") || value.startsWith("http") ? value : undefined;
+}
+
 // gray-matter parses unquoted YAML dates (e.g. `date: 2026-07-20`) into a
 // Date object rather than a string, so normalize back to "YYYY-MM-DD".
 function normalizeFrontmatter(data: Record<string, unknown>): ArticleFrontmatter {
@@ -64,6 +75,7 @@ function normalizeFrontmatter(data: Record<string, unknown>): ArticleFrontmatter
   return {
     ...data,
     date: date instanceof Date ? date.toISOString().slice(0, 10) : String(date),
+    imagen: normalizeImagen(data.imagen),
   } as ArticleFrontmatter;
 }
 

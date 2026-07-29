@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { siteUrl, siteTitle } from "../../lib/site";
+import { siteUrl, siteTitle, defaultOgImage } from "../../lib/site";
 import {
   categories,
   categoryLabel,
@@ -25,7 +25,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const result = await getArticle(category, slug);
   if (!result) return {};
   const { frontmatter } = result;
-  const images = frontmatter.imagen ? [{ url: frontmatter.imagen }] : undefined;
+  // Declaring `openGraph` below replaces the inherited block wholesale, so an
+  // article still being illustrated must fall back to the site image by hand.
+  const images = [{ url: frontmatter.imagen ?? defaultOgImage }];
 
   return {
     title: frontmatter.title,

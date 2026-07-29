@@ -2,6 +2,7 @@
 title: "Cómo enseñar a tu perro a sentarse en 5 pasos"
 description: Guía paso a paso, con trucos de positividad, para enseñar la orden básica de sentarse.
 category: perros
+tema: "Adiestramiento"
 slug: "ensenar-tu-perro-a-sentarse-en-5-pasos"
 imagen: "/images/articulos/sentarse.png"
 keyword: "como enseñar a un perro a sentarse"

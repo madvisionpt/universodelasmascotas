@@ -12,7 +12,15 @@ const taxonomy: { href: string; label: string; subtemas: string[] }[] = [
   {
     href: "/perros",
     label: "Perros",
-    subtemas: ["Comportamiento", "Adiestramiento", "Razas", "Salud", "Nutrición", "Cachorros"],
+    subtemas: [
+      "Comportamiento",
+      "Adiestramiento",
+      "Cuidados",
+      "Razas",
+      "Salud",
+      "Nutrición",
+      "Cachorros",
+    ],
   },
   {
     href: "/gatos",
