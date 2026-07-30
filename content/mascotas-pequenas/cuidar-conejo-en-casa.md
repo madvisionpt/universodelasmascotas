@@ -3,7 +3,7 @@ title: "Cómo cuidar un conejo en casa: guía para principiantes"
 description: "Aprende cómo cuidar un conejo en casa: jaula o espacio libre, alimentación, higiene y salud. Guía completa para quienes tienen su primer conejo."
 category: mascotas-pequenas
 tema: "Conejos"
-imagen: "PLACEHOLDER - buscar: conejo doméstico explorando el salón de una casa"
+imagen: "/images/articulos/coelhodomestico.png"
 slug: "cuidar-conejo-en-casa"
 keyword: "cómo cuidar un conejo en casa"
 date: "2026-07-31"

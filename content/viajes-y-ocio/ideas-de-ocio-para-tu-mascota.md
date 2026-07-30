@@ -3,7 +3,7 @@ title: "15 ideas de ocio para disfrutar con tu mascota"
 description: "Descubre ideas de ocio para tu mascota: planes al aire libre, actividades en casa y juegos de estimulación, tanto para perros como para gatos."
 category: viajes-y-ocio
 tema: "Actividades"
-imagen: "PLACEHOLDER - buscar: familia paseando con su perro en un parque al aire libre"
+imagen: "/images/articulos/perrofamilia.png"
 slug: "ideas-de-ocio-para-tu-mascota"
 keyword: "ideas de ocio para tu mascota"
 date: "2026-07-31"

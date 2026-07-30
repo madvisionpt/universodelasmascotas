@@ -3,7 +3,7 @@ title: "Por qué mi perro me sigue a todas partes: 7 razones"
 description: "¿Por qué mi perro me sigue a todas partes? Descubre las 7 razones reales de este comportamiento y cuándo puede ser una señal de ansiedad por separación."
 category: perros
 tema: "Comportamiento"
-imagen: "PLACEHOLDER - buscar: perro siguiendo a su dueño por el pasillo de casa"
+imagen: "/images/articulos/perrosigue.png"
 slug: "por-que-mi-perro-me-sigue"
 keyword: "por qué mi perro me sigue a todas partes"
 date: "2026-07-29"

@@ -3,7 +3,7 @@ title: "Cómo cuidar a un gato: guía básica para primerizos"
 description: "¿Es tu primer gato? Descubre cómo cuidar a un gato paso a paso: alimentación, higiene, arenero, salud y bienestar desde el primer día en casa."
 category: gatos
 tema: "Cuidados"
-imagen: "PLACEHOLDER - buscar: gato adulto relajado en el salón de una casa acogedora"
+imagen: "/images/articulos/gatorelaxado.png"
 slug: "cuidados-basicos-gato-primerizos"
 keyword: "cómo cuidar a un gato"
 date: "2026-07-30"

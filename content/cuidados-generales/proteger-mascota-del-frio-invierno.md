@@ -3,7 +3,7 @@ title: "Cómo proteger a tu mascota del frío en invierno"
 description: "Descubre cómo proteger a tu mascota del frío en invierno: qué perros y gatos son más sensibles, cómo cuidarlos en la calle y en casa, y qué evitar."
 category: cuidados-generales
 tema: "Verano/Invierno"
-imagen: "PLACEHOLDER - buscar: perro con abrigo caminando sobre nieve"
+imagen: "/images/articulos/caoneve.png"
 slug: "proteger-mascota-del-frio-invierno"
 keyword: "cómo proteger a tu mascota del frío"
 date: "2026-07-31"

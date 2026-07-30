@@ -3,7 +3,7 @@ title: "Cuánto debe comer un gato al día según su edad y peso"
 description: "¿Cuánto debe comer un gato al día? Aprende a calcular la ración según su edad, peso y actividad, y evita los errores más comunes en su alimentación."
 category: gatos
 tema: "Nutrición"
-imagen: "PLACEHOLDER - buscar: gato comiendo de un cuenco en la cocina"
+imagen: "/images/articulos/gatocomer.png"
 slug: "cuanto-debe-comer-un-gato"
 keyword: "cuánto debe comer un gato al día"
 date: "2026-07-30"

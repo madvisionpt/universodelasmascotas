@@ -3,7 +3,7 @@ title: "Cómo viajar con tu perro: consejos y requisitos"
 description: "Aprende cómo viajar con tu perro de forma segura: transportín, seguridad en el coche, paradas necesarias y documentación básica que debes revisar."
 category: viajes-y-ocio
 tema: "Viajar con mascotas"
-imagen: "PLACEHOLDER - buscar: perro asomado por la ventana del coche durante un viaje"
+imagen: "/images/articulos/perroviagem.png"
 slug: "viajar-con-tu-perro"
 keyword: "cómo viajar con tu perro"
 date: "2026-07-31"

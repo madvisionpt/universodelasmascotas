@@ -3,7 +3,7 @@ title: "Cómo saber si tu gato está enfermo: 10 señales"
 description: "¿Cómo saber si mi gato está enfermo? Descubre las señales de alerta que los gatos suelen ocultar y cuándo es el momento de acudir al veterinario."
 category: gatos
 tema: "Salud"
-imagen: "PLACEHOLDER - buscar: gato tumbado con expresión decaída junto a su cuenco de comida"
+imagen: "/images/articulos/gatoenfermo.png"
 slug: "senales-gato-enfermo"
 keyword: "cómo saber si mi gato está enfermo"
 date: "2026-07-30"

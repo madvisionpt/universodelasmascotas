@@ -3,7 +3,7 @@ title: "Cómo cuidar a un gatito recién llegado a casa"
 description: "¿Acabas de adoptar un gatito? Descubre cómo cuidar a un gatito recién llegado a casa: adaptación, alimentación, arenero y primeros días con él."
 category: gatos
 tema: "Gatitos"
-imagen: "PLACEHOLDER - buscar: gatito pequeño explorando su nueva casa"
+imagen: "/images/articulos/gatobebe.png"
 slug: "cuidar-gatito-recien-llegado"
 keyword: "cómo cuidar a un gatito recién llegado"
 date: "2026-07-30"

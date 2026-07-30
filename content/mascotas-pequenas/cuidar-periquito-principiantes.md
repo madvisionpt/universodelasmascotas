@@ -3,7 +3,7 @@ title: "Cómo cuidar un periquito: guía básica para principiantes"
 description: "¿Cómo cuidar un periquito correctamente? Aprende todo sobre su jaula, alimentación, socialización y salud en esta guía para principiantes."
 category: mascotas-pequenas
 tema: "Aves"
-imagen: "PLACEHOLDER - buscar: periquito posado en un columpio dentro de su jaula"
+imagen: "/images/articulos/piriquito.png"
 slug: "cuidar-periquito-principiantes"
 keyword: "cómo cuidar un periquito"
 date: "2026-07-31"

@@ -3,7 +3,7 @@ title: "10 razas de perros ideales para pisos pequeños"
 description: "¿Buscas razas de perros para pisos pequeños? Descubre 10 opciones que se adaptan bien a espacios reducidos y qué necesita cada una para vivir feliz."
 category: perros
 tema: "Razas"
-imagen: "PLACEHOLDER - buscar: perro pequeño descansando en el sofá de un apartamento luminoso"
+imagen: "/images/articulos/perropequeno.png"
 slug: "razas-perros-pisos-pequenos"
 keyword: "razas de perros para pisos pequeños"
 date: "2026-07-29"

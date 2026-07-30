@@ -3,7 +3,7 @@ title: "Cómo montar un acuario para principiantes paso a paso"
 description: "Aprende cómo montar un acuario para principiantes: ciclado, filtro, decoración y elección de peces. Evita los errores más comunes al empezar."
 category: mascotas-pequenas
 tema: "Peces"
-imagen: "PLACEHOLDER - buscar: acuario doméstico con plantas y peces de colores"
+imagen: "/images/articulos/aquario.png"
 slug: "montar-acuario-principiantes"
 keyword: "cómo montar un acuario para principiantes"
 date: "2026-07-31"

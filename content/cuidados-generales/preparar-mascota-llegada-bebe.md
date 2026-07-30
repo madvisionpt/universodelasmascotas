@@ -3,7 +3,7 @@ title: "Cómo preparar a tu mascota para la llegada de un bebé"
 description: "Cómo preparar a tu mascota para la llegada de un bebé: antelación, primer encuentro y convivencia segura y tranquila con tu perro o gato en casa."
 category: cuidados-generales
 tema: "Mascotas y niños"
-imagen: "PLACEHOLDER - buscar: perro tumbado tranquilamente junto a una cuna de bebé"
+imagen: "/images/articulos/caocombebe.png"
 slug: "preparar-mascota-llegada-bebe"
 keyword: "cómo preparar a tu mascota para la llegada de un bebé"
 date: "2026-07-31"

@@ -3,7 +3,7 @@ title: "Cómo cuidar una tortuga de agua en casa"
 description: "¿Cómo cuidar una tortuga de agua? Descubre qué acuaterrario necesita, cómo alimentarla y los errores más comunes al tener una por primera vez."
 category: mascotas-pequenas
 tema: "Reptiles"
-imagen: "PLACEHOLDER - buscar: tortuga de agua tomando el sol sobre una roca en su acuaterrario"
+imagen: "/images/articulos/tortuga.png"
 slug: "cuidar-tortuga-de-agua"
 keyword: "cómo cuidar una tortuga de agua"
 date: "2026-07-31"

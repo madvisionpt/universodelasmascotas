@@ -3,7 +3,7 @@ title: "Cuidados para perros y gatos mayores: guía completa"
 description: "Descubre los cuidados clave para perros y gatos mayores: alimentación, movilidad, revisiones veterinarias y señales de alerta a esta edad."
 category: cuidados-generales
 tema: "Envejecimiento"
-imagen: "PLACEHOLDER - buscar: perro mayor de hocico canoso descansando junto a su dueño"
+imagen: "/images/articulos/caovelho.png"
 slug: "cuidados-perros-gatos-mayores"
 keyword: "cuidados para perros y gatos mayores"
 date: "2026-07-31"

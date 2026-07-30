@@ -3,7 +3,7 @@ title: "Primeros auxilios para mascotas: qué hacer en una emergencia"
 description: "Guía de primeros auxilios para mascotas: cómo actuar ante una emergencia con tu perro o gato mientras llegas al veterinario, paso a paso."
 category: cuidados-generales
 tema: "Primeros auxilios"
-imagen: "PLACEHOLDER - buscar: botiquín de primeros auxilios para mascotas junto a un perro y un gato"
+imagen: "/images/articulos/guia.png"
 slug: "primeros-auxilios-mascotas"
 keyword: "primeros auxilios para mascotas"
 date: "2026-07-31"

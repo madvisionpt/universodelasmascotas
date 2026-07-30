@@ -3,7 +3,7 @@ title: "Cómo saber si mi perro tiene dolor: 10 señales"
 description: "Aprende cómo saber si mi perro tiene dolor: las señales de alerta en su postura, su conducta y su descanso, y cuándo debes acudir al veterinario."
 category: perros
 tema: "Salud"
-imagen: "PLACEHOLDER - buscar: perro tumbado con expresión decaída acompañado por su dueño"
+imagen: "/images/articulos/perrodolor.png"
 slug: "senales-de-dolor-en-perros"
 keyword: "cómo saber si mi perro tiene dolor"
 date: "2026-07-29"

@@ -3,7 +3,7 @@ title: "Cada cuánto bañar a tu perro o gato: guía práctica"
 description: "¿Cada cuánto bañar a tu perro o gato? Descubre la frecuencia recomendada según el pelaje y el estilo de vida, y los errores más comunes al bañarlos."
 category: cuidados-generales
 tema: "Higiene"
-imagen: "PLACEHOLDER - buscar: perro siendo bañado con espuma en una bañera"
+imagen: "/images/articulos/perrobanho.png"
 slug: "cada-cuanto-banar-perro-gato"
 keyword: "cada cuánto bañar a tu perro o gato"
 date: "2026-07-31"

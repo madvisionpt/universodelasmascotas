@@ -3,7 +3,7 @@ title: "Cómo cuidar un hámster: alimentación, jaula y cuidados"
 description: "¿Cómo cuidar un hámster correctamente? Descubre qué jaula necesita, cómo alimentarlo y los errores más comunes al tener uno por primera vez."
 category: mascotas-pequenas
 tema: "Hámsters"
-imagen: "PLACEHOLDER - buscar: hámster dorado explorando su jaula con accesorios"
+imagen: "/images/articulos/hamsterroda.png"
 slug: "cuidar-hamster-guia"
 keyword: "cómo cuidar un hámster"
 date: "2026-07-31"
