@@ -8,13 +8,18 @@ export default function ContactForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    // TODO: este formulario todavía no envía el mensaje a ningún sitio.
+    // Falta conectar un envío real, por ejemplo con Formspree, Resend o
+    // una API route propia (app/api/contacto/route.ts) que reciba estos
+    // campos y los reenvíe por email o los guarde en una base de datos.
     setSubmitted(true);
   }
 
   if (submitted) {
     return (
       <p className="rounded-2xl bg-blue-light px-6 py-5 text-sm font-semibold text-navy">
-        ¡Gracias por tu mensaje! Te responderemos lo antes posible.
+        ¡Gracias por tu mensaje! Hemos recibido tu consulta y te
+        responderemos lo antes posible.
       </p>
     );
   }
@@ -39,6 +44,17 @@ export default function ContactForm() {
         <input
           id="email"
           type="email"
+          required
+          className="mt-1.5 w-full rounded-xl border border-navy/15 bg-white px-4 py-2.5 text-sm text-navy outline-none transition-colors focus:border-blue"
+        />
+      </div>
+      <div>
+        <label htmlFor="subject" className="text-sm font-semibold text-navy">
+          Asunto
+        </label>
+        <input
+          id="subject"
+          type="text"
           required
           className="mt-1.5 w-full rounded-xl border border-navy/15 bg-white px-4 py-2.5 text-sm text-navy outline-none transition-colors focus:border-blue"
         />

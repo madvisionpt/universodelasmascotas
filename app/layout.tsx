@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { siteUrl, siteTitle, siteDescription } from "./lib/site";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import CookieBanner from "./components/CookieBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -87,6 +88,7 @@ export default function RootLayout({
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );

@@ -38,6 +38,22 @@ export default function ContactoPage() {
 
         <div className="mt-10 border-t border-navy/10 pt-8">
           <h2 className="text-sm font-bold uppercase tracking-wide text-gray-text">
+            Otra forma de contactar
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-gray-text">
+            También puedes escribirnos directamente a{" "}
+            <a
+              href="mailto:[EMAIL DE CONTACTO]"
+              className="font-semibold text-blue hover:underline"
+            >
+              [EMAIL DE CONTACTO]
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className="mt-10 border-t border-navy/10 pt-8">
+          <h2 className="text-sm font-bold uppercase tracking-wide text-gray-text">
             Síguenos
           </h2>
           <div className="mt-4 flex gap-3">

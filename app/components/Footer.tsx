@@ -10,6 +10,13 @@ const recursosLinks = [{ href: "/comparativas", label: "Comparativas" }];
 const siteLinks = [
   { href: "/", label: "Inicio" },
   { href: "/contacto", label: "Contacto" },
+  { href: "/sobre-nosotros", label: "Sobre nosotros" },
+];
+
+const legalLinks = [
+  { href: "/politica-de-privacidad", label: "Política de privacidad" },
+  { href: "/politica-de-cookies", label: "Política de cookies" },
+  { href: "/aviso-legal", label: "Aviso legal" },
 ];
 
 const socialLinks = [
@@ -108,9 +115,26 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row">
-          <p>© 2026 Universo de las Mascotas. Todos los derechos reservados.</p>
-          <p>Hecho con cariño para amantes de las mascotas.</p>
+        <div className="mt-12 border-t border-white/10 pt-6">
+          <div className="flex flex-col items-center justify-between gap-4 text-xs text-white/50 sm:flex-row">
+            <p>© 2026 Universo de las Mascotas. Todos los derechos reservados.</p>
+            <p>Hecho con cariño para amantes de las mascotas.</p>
+          </div>
+
+          <nav
+            aria-label="Legal"
+            className="mt-4 flex flex-wrap justify-center gap-x-5 gap-y-2 sm:justify-start"
+          >
+            {legalLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-xs text-white/50 transition-colors hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </div>
     </footer>
